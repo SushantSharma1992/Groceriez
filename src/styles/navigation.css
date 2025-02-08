@@ -1,0 +1,60 @@
+.navigationPanel {
+    position: -webkit-fixed;
+    /* Safari */
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 0 .5rem 0 .5rem;
+
+}
+
+.disable-select {
+    cursor: default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.navItem {
+    all: unset;
+    flex-grow: 1;
+    padding: .5rem;
+    background-color: var(--secondary-color-light);
+    margin: 1px;
+    border: 1px solid var(--primary-color);
+    font-size: 1rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.navItem > svg{
+    padding-right: 8px;
+}
+
+.navItem:active {
+    background-color: var(--secondary-color);
+}
+
+.navImage {
+    height: 15px;
+    width: 15px;
+}

@@ -410,8 +410,6 @@ select {
   padding: 8px;
 }
 
-.option_image_container {
-}
 
 .option_image {
   height: 40px;
@@ -432,7 +430,7 @@ input[type="file"] {
 }
 
 .videoFrame {
-  width: 100%;
+  max-height: 87dvh;
 }
 
 .search_container {
@@ -551,10 +549,6 @@ input[type="file"] {
 
 .history_container {
   background-color: black;
-}
-
-.barcode_scanner_modal {
-  padding: 0.5rem;
 }
 
 .paddingright-md {

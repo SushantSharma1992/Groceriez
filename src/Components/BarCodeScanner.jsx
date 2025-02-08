@@ -44,14 +44,14 @@ export default function BarCodeScanner({ updateBarcode, closeDialog }) {
               return prevProps + 1;
             });
             setScanError(error);
-            console.error({ error });
+            
           }
         }
       )
       .then((response) => {})
       .catch((error) => {
         setCameraError(error);
-        console.error({ error });
+        
       });
     return () => {
       readerRef.reset();
@@ -74,7 +74,7 @@ export default function BarCodeScanner({ updateBarcode, closeDialog }) {
           const track = stream.getVideoTracks()[0];
 
           if (!track.getCapabilities().torch) {
-            alert("No torch available.");
+            alert("Torch Unavailable.");
           }
           track.applyConstraints({ advanced: [{ torch: flashOn }] });
         })

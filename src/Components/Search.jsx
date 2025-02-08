@@ -5,6 +5,7 @@ import SearchResults from "./SearchResults";
 
 export default function Search({ list, actionOnResult }) {
   const [searchResults, setSearchResults] = useState([]);
+  const [searchquery, setSearchquery] = useState("");
   let fuse;
   const options = {
     includeScore: true,
@@ -26,11 +27,13 @@ export default function Search({ list, actionOnResult }) {
           type="search"
           placeholder="Search item to add"
           onChange={findQuery}
+          value={searchquery}
         ></input>
         <div className="paddingright-md">
           <BarCodeDialog
             setBarcode={(value) => {
               const event = { target: { value: value } };
+              setSearchquery(value);
               findQuery(event);
             }}
           />

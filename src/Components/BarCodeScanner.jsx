@@ -90,15 +90,15 @@ export default function BarCodeScanner({ updateBarcode, closeDialog }) {
   ) : (
     <div className="camera_container">
       <video className="videoFrame" ref={videoRef} />
-      <div className="center space_between">
-        {`Scanning Frames : ${frameCount}`}
+      <div className="center space_between align_to_bottom">
+        {`Frames Scanned : ${frameCount}`}
         <div
           className="flash_image_container"
           onClick={() => {
             setFlashOn(!flashOn);
           }}
         >
-          {flashOn ? <IoIosFlash /> : <IoIosFlashOff />}
+          {flashOn ? <IoIosFlash className="flash_on"/> : <IoIosFlashOff className="flash_off"/>}
         </div>
       </div>
     </div>

@@ -26,7 +26,7 @@ body {
   height: 100dvh;
   margin-inline: auto;
   text-align: center;
-  
+
   /* --primary-color-light: #8696fe;
   --primary-color: #4942e4;
   --secondary-color-light: #fff5b8;
@@ -313,7 +313,7 @@ button {
   flex: 1;
   flex-grow: 1;
   color: white;
-  font-size: small;
+  font-size: 1rem;
   padding: 0.5em;
   border-radius: 2em;
 }
@@ -332,6 +332,7 @@ button {
 
 .button_margin_top {
   margin-top: 1em;
+  padding: 0.5rem 1.6em;
 }
 
 .padding-m {
@@ -404,8 +405,9 @@ select {
 }
 
 .flash_image_container {
-  background-color: lightgrey;
-  border-radius: 50%;
+  font-size: 2rem;
+  color: var(--secondary-color);
+  padding: 8px;
 }
 
 .option_image_container {
@@ -425,7 +427,8 @@ input[type="file"] {
 }
 
 .camera_container {
-  color: red;
+  position: relative;
+  color: var(--primary-color-light);
 }
 
 .videoFrame {
@@ -608,4 +611,17 @@ input[type="file"] {
   height: 35px;
   width: 35px;
   color: var(--dark);
+}
+
+.flash_off {
+  color: var(--primary-color);
+}
+.flash_on {
+  color: var(--primary-color-light);
+}
+
+.align_to_bottom {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
 }

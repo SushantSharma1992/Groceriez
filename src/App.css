@@ -18,8 +18,11 @@ html {
   font-style: normal;
 }
 
-body {
-  font-family: system-ui;
+body,
+button,
+a,
+input {
+  font-family: "Quicksand", serif;
 }
 
 .App {
@@ -79,17 +82,16 @@ body {
   justify-content: space-between;
 }
 
-button {
+.primary_button {
   background-color: var(--primary-color-light);
   flex: 1;
-  color: #000 !important;
-  height: 100%;
+  color: var(--dark);
   min-width: 50px;
 }
 
 .button_container {
   border-radius: 0.5em;
-  height: 100%;
+  width: 100%;
 }
 
 .primary {
@@ -98,6 +100,11 @@ button {
 
 .secondary {
   background-color: var(--secondary-color-light);
+  color: var(--dark);
+  font-size: 1rem;
+  padding: 0.5em;
+  border-radius: 2em;
+  margin: 0 auto;
 }
 
 .App-logo {
@@ -268,7 +275,7 @@ button {
   background-color: #57c5b6;
   text-align: center;
   border: none;
-  z-index: var(--add-toplevel-plane);
+  z-index: var(--z-level3);
 }
 
 .addGroceries_button:active {
@@ -335,8 +342,11 @@ button {
   padding: 0.5rem 1.6em;
 }
 
-.padding-m {
+.padding-md {
   padding: 8px;
+}
+.paddingright-md {
+  padding-right: 8px;
 }
 
 .padding-x {
@@ -409,7 +419,6 @@ select {
   color: var(--secondary-color);
   padding: 8px;
 }
-
 
 .option_image {
   height: 40px;
@@ -515,9 +524,6 @@ input[type="file"] {
 .menu_container {
   width: fit-content;
   position: relative;
-  button {
-    all: unset;
-  }
 }
 
 .header_container {
@@ -525,7 +531,6 @@ input[type="file"] {
   padding: 0 0.5rem;
   max-height: 48px;
   height: 48px;
-  font-weight: bold;
   z-index: var(--z-level4);
 }
 
@@ -533,7 +538,7 @@ input[type="file"] {
   position: absolute;
   top: 0px;
   right: 0;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color-light);
   z-index: var(--z-level4);
   height: 100dvh;
   width: 255px;
@@ -544,7 +549,8 @@ input[type="file"] {
 .menubutton {
   margin-left: auto;
   width: fit-content;
-  padding: 4px;
+  padding: 8px;
+  color: var(--primary-color);
 }
 
 .history_container {
@@ -557,44 +563,50 @@ input[type="file"] {
 
 .menuItem {
   flex-grow: 1;
-  padding: 0.5rem;
   background-color: var(--secondary-color-light);
   margin: 8px;
   border: 1px solid var(--primary-color);
-  font-size: 1rem;
-  border-radius: 1rem;
   text-decoration: none;
-  color: black;
+  color: var(--dark);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   font-size: 1.5rem;
-  button {
-    all: unset;
+  border-radius: 1rem;
+  font-weight: bold;
+
+  .menuItem_child {
+    font-size: inherit;
+    border-radius: 1rem;
+    color: inherit;
+    background-color: var(--secondary-color);
+    font-weight: bold;
+    padding: 0.5rem;
+  }
+  .menuItem_child:hover {
+    background-color: var(--primary-color-light);
   }
   a {
     flex-direction: row;
-    color: black;
     text-decoration: none;
-    svg {
-      padding-right: 8px;
-    }
   }
 
   button,
   a {
-    padding: 4px;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: end;
     align-items: center;
+    color: inherit;
+  }
+  svg {
+    padding-right: 4px;
   }
 }
 .delete_button {
-  max-width: 64px;
-  padding: 8px;
+  max-width: 5rem;
 }
 
 .margin-auto {

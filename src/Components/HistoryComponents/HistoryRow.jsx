@@ -18,9 +18,9 @@ const HistoryRow = ({ item }) => {
   };
 
   return (
-    <div key={item.name} className="flex-row">
+    <div key={item.name} className="flex-row padding-md">
       <div
-        className="margin-auto"
+        className="margin-auto paddingright-md"
         onClick={() => {
           loadIntoCart(item.snapshot);
           redirectToCart();

@@ -17,20 +17,22 @@ const BarCodeDialog = ({ setBarcode }) => {
   return (
     <div>
       <dialog className="barcode_scanner_modal" ref={dialogRef}>
-        {isDialogOpen && (
-          <BarCodeScanner
-            updateBarcode={setBarcode}
-            closeDialog={closeDialog}
-          />
-        )}
-        <button
-          className="secondary form_row button_margin_top"
-          value="cancel"
-          formMethod="dialog"
-          onClick={closeDialog}
-        >
-          Cancel
-        </button>
+        <div className="direction_column">
+          {isDialogOpen && (
+            <BarCodeScanner
+              updateBarcode={setBarcode}
+              closeDialog={closeDialog}
+            />
+          )}
+          <button
+            className="secondary button_margin_top "
+            value="cancel"
+            formMethod="dialog"
+            onClick={closeDialog}
+          >
+            Cancel
+          </button>
+        </div>
       </dialog>
       <IoMdBarcode
         onClick={() => {

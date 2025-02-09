@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AddItemFormPage from "../Components/Addform/AddItemFormPage";
 import Header from "../Components/Header/Header";
 import Menu from "../Components/Header/Menu";
@@ -14,6 +14,7 @@ import { routerPath } from "./Urls";
 export default function AppRoutes() {
   const RoutesList = () => (
     <Routes>
+      <Route path={routerPath.home} element={<Navigate replace to={routerPath.products} />}></Route>
       <Route path={routerPath.products} element={<Products />} />
       <Route path={routerPath.cart} element={<Cart />} />
       <Route path={routerPath.settings} element={<Settings />} />

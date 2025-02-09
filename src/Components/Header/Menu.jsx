@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { routerPath } from "../../Routes/Urls";
 import AddToHistory from "../AddToHistory";
 import ClearCart from "../CartComponents/ClearCart";
+import Button from "../Button";
 
 const Menu = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -50,10 +51,12 @@ const Menu = () => {
           <ClearCart />
         </MenuContainer>
         <MenuContainer>
-          <Link to={routerPath.settings}>
-            <AiOutlineSetting />
-            <div>Settings</div>
-          </Link>
+          <Button type="menu">
+            <Link to={routerPath.settings}>
+              <AiOutlineSetting />
+              <div>Settings</div>
+            </Link>
+          </Button>
         </MenuContainer>
       </div>
     </div>

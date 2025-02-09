@@ -32,7 +32,7 @@ export default function AddQuantityRow({ index, value, onClickRemove }) {
         ></input>
       </span>
 
-      <span className="resetDefaultWidth direction_column button_container">
+      <span className="resetDefaultWidth direction_column delete_button">
         <Button
           onClick={() => {
             onClickRemove(index);

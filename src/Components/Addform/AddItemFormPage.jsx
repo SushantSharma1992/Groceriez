@@ -5,6 +5,7 @@ import { initObject, metricChartArray } from "../../Utils/Constants";
 import BarCodeDialog from "../BarCodeDialog";
 import AddQuantityRow from "./AddQuantityRow";
 import FormRow from "./FormRow";
+import Button from "../Button";
 
 export default function AddItemFormPage(props) {
   const { product, setShow } = props;
@@ -190,26 +191,32 @@ export default function AddItemFormPage(props) {
             />
 
             {quantityArray}
-            <button
-              className="form_row button_margin_top"
-              type="button"
-              onClick={() => {
-                setQuantityArray((prevState) => {
-                  return [
-                    ...prevState,
-                    <AddQuantityRow
-                      key={quantityArray.length}
-                      index={quantityArray.length}
-                      value={{ quantity: 3 * quantityArray.length, price: "" }}
-                      onClickRemove={deleteQuantityRow}
-                    />,
-                  ];
-                });
-              }}
-            >
-              +
-            </button>
-            <button className="form_row button_margin_top">Save</button>
+            <div className="form_row">
+              <Button
+                type="primary"
+                onClick={() => {
+                  setQuantityArray((prevState) => {
+                    return [
+                      ...prevState,
+                      <AddQuantityRow
+                        key={quantityArray.length}
+                        index={quantityArray.length}
+                        value={{
+                          quantity: 3 * quantityArray.length,
+                          price: "",
+                        }}
+                        onClickRemove={deleteQuantityRow}
+                      />,
+                    ];
+                  });
+                }}
+              >
+                +
+              </Button>
+            </div>
+            <div className="form_row">
+              <Button>Save</Button>
+            </div>
           </div>
         </form>
       </div>

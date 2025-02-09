@@ -5,6 +5,6 @@ export const routerPath = {
   settings: `${prefix}/settings`,
   history: `${prefix}/history`,
   options: `${prefix}/options`,
-  products: `${prefix}/`,
+  products: `${prefix}/products`,
   barcode: `${prefix}/barcode`,
 };

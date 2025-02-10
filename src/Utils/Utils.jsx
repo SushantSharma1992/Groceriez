@@ -26,3 +26,5 @@ export const deleteFromArray = (array, matchKey, matchValue) => {
   array.splice(index, 1);
   return array;
 };
+
+export const escapePressed = (e) => e.key === "Escape";

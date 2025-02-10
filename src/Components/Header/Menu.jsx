@@ -7,6 +7,7 @@ import { routerPath } from "../../Routes/Urls";
 import AddToHistory from "../AddToHistory";
 import ClearCart from "../CartComponents/ClearCart";
 import Button from "../Button";
+import { escapePressed } from "../../Utils/Utils";
 
 const Menu = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -36,7 +37,7 @@ const Menu = () => {
         className="right_panel"
         style={{ width: `${openMenu ? "255px" : "0"}` }}
         onKeyDown={(e) => {
-          e.key === "Escape" && close();
+          escapePressed(e) && close();
         }}
         onMouseLeave={close}
         onTouchEnd={close}

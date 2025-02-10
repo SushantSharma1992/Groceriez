@@ -276,6 +276,7 @@ input {
   text-align: center;
   border: none;
   z-index: var(--z-level3);
+  color: var(--dark);
 }
 
 .addGroceries_button:active {

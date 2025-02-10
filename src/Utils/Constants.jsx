@@ -56,20 +56,16 @@ export const defaultObject2 = {
   },
 };
 export const defaultObject = {
-  id: 0,
+  id: 1,
   barcode: "",
   brand: "MotherDairy",
-  name: "Milk",
+  name: "Double toned milk",
   createdOn: new Date(),
   updatedOn: new Date(),
   weight: 500,
   unit: "ml",
   purchaseQuantity: 1,
-  rates: [
-    { quantity: 1, price: 50 },
-    { quantity: 6, price: 40 },
-    { quantity: 12, price: 30 },
-  ],
+  rates: [{ quantity: 1, price: 25 }],
 };
 export const defaultObject3 = {
   id: 3,
@@ -132,11 +128,11 @@ export const initObject = {
   rates: [{ quantity: 1, price: "" }],
 };
 
-const initHistoryObj = { name: "Empty", snapshot: [] }
+const initHistoryObj = { name: "Empty", snapshot: [] };
 
 export const metricChartArray = [
   ["Kg", "1000"],
-  ["mg", "1"],
+  ["g", "1"],
   ["ltr", "1000"],
   ["ml", "1"],
 ];

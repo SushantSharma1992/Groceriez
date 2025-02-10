@@ -29,6 +29,7 @@ export default function AddQuantityRow({ index, value, onClickRemove }) {
           min="0"
           defaultValue={value.price}
           required
+          step=".01"
         ></input>
       </span>
 

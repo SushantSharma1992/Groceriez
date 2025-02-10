@@ -6,6 +6,7 @@ import BarCodeDialog from "../BarCodeDialog";
 import AddQuantityRow from "./AddQuantityRow";
 import FormRow from "./FormRow";
 import Button from "../Button";
+import { escapePressed } from "../../Utils/Utils";
 
 export default function AddItemFormPage(props) {
   const { product, setShow } = props;
@@ -59,6 +60,7 @@ export default function AddItemFormPage(props) {
 
   const resetValues = () => {
     document.getElementById("myForm").reset();
+    document.getElementById("brand").focus();
     setItem(initObject);
   };
 
@@ -111,19 +113,24 @@ export default function AddItemFormPage(props) {
     return Object.assign(...element);
   };
 
+  const close = () => {
+    resetValues();
+    setShow(false);
+  };
+
   return (
     <div className="add__item_container">
-      <div
-        className="closeButton"
-        onClick={() => {
-          resetValues();
-          setShow(false);
-        }}
-      >
+      <div className="closeButton" onClick={close}>
         <IoCloseCircleOutline />
       </div>
       <div className="add__Item">
-        <form onSubmit={onSubmit} id="myForm">
+        <form
+          onSubmit={onSubmit}
+          id="myForm"
+          onKeyDown={(e) => {
+            escapePressed(e) && close();
+          }}
+        >
           <div className="form_items">
             <FormRow
               label={"Barcode"}
@@ -144,6 +151,7 @@ export default function AddItemFormPage(props) {
               label={"Brand:"}
               input={
                 <input
+                  id="brand"
                   className="flex-1"
                   type="text"
                   name="brand"
@@ -174,6 +182,7 @@ export default function AddItemFormPage(props) {
                     name="weight"
                     defaultValue={item.weight}
                     min={1}
+                    step=".01"
                   ></input>
 
                   <select id="unit" name="unit" defaultValue={item.unit}>

@@ -12,6 +12,7 @@ export default function BarCodeScanner({ updateBarcode, closeDialog }) {
   const [scanError, setScanError] = useState();
   const [cameraError, setCameraError] = useState();
   const [frameCount, setFrameCount] = useState(0);
+  const [isFlashAvailable, setIsFlashAvailable] = useState(true);
   const [flashOn, setFlashOn] = useState(false);
   const videoRef = useRef();
 
@@ -44,14 +45,12 @@ export default function BarCodeScanner({ updateBarcode, closeDialog }) {
               return prevProps + 1;
             });
             setScanError(error);
-            
           }
         }
       )
       .then((response) => {})
       .catch((error) => {
         setCameraError(error);
-        
       });
     return () => {
       readerRef.reset();
@@ -74,9 +73,11 @@ export default function BarCodeScanner({ updateBarcode, closeDialog }) {
           const track = stream.getVideoTracks()[0];
 
           if (!track.getCapabilities().torch) {
-            alert("Torch Unavailable.");
+            setIsFlashAvailable(false);
+          } else {
+            setIsFlashAvailable(true);
+            track.applyConstraints({ advanced: [{ torch: flashOn }] });
           }
-          track.applyConstraints({ advanced: [{ torch: flashOn }] });
         })
         .catch((error) => {
           setCameraError(error);
@@ -98,7 +99,15 @@ export default function BarCodeScanner({ updateBarcode, closeDialog }) {
             setFlashOn(!flashOn);
           }}
         >
-          {flashOn ? <IoIosFlash className="flash_on"/> : <IoIosFlashOff className="flash_off"/>}
+          {isFlashAvailable ? (
+            flashOn ? (
+              <IoIosFlash className="flash_on" />
+            ) : (
+              <IoIosFlashOff className="flash_off" />
+            )
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>

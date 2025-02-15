@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { SavedData, defaultObject } from "../Utils/Constants";
+import { SavedData, defaultNotificationObj, defaultObject } from "../Utils/Constants";
 
 const savedItemsList = JSON.parse(localStorage.getItem(SavedData.GROCERIES));
 let savedCartItems = JSON.parse(localStorage.getItem(SavedData.CART_DATA));
@@ -18,13 +18,14 @@ if (savedItemsList || savedItemsList?.length > 0) {
 
 if (!savedHistoryList || savedHistoryList?.length === 0) {
   savedHistoryList = [];
-} 
+}
 
 export const ItemContext = React.createContext();
 export default function ItemsProvider({ children }) {
   const [items, setItems] = useState(itemList);
   const [cartList, setCartList] = useState(savedCartItems);
   const [savedHistory, setSavedHistory] = useState(savedHistoryList);
+  const [notification, setNotification] = useState(defaultNotificationObj);
 
   useEffect(() => {
     localStorage.setItem(SavedData.GROCERIES, JSON.stringify(items));
@@ -45,6 +46,8 @@ export default function ItemsProvider({ children }) {
         setCartList,
         savedHistory,
         setSavedHistory,
+        notification,
+        setNotification,
       }}
     >
       {children}

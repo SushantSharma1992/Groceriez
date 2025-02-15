@@ -10,11 +10,15 @@ import Home from "../Pages/Home";
 import Products from "../Pages/Products";
 import Settings from "../Pages/Settings";
 import { routerPath } from "./Urls";
+import Notify from "../Components/Notify";
 
 export default function AppRoutes() {
   const RoutesList = () => (
     <Routes>
-      <Route path={routerPath.home} element={<Navigate replace to={routerPath.products} />}></Route>
+      <Route
+        path={routerPath.home}
+        element={<Navigate replace to={routerPath.products} />}
+      ></Route>
       <Route path={routerPath.products} element={<Products />} />
       <Route path={routerPath.cart} element={<Cart />} />
       <Route path={routerPath.settings} element={<Settings />} />
@@ -26,6 +30,7 @@ export default function AppRoutes() {
 
   return (
     <BrowserRouter>
+      <Notify />
       <Header right={<Menu />}></Header>
       <RoutesList />
       <Home />

@@ -3,11 +3,13 @@ import Item from "../Components/Item";
 import ItemQuantityChanger from "../Components/ItemQuantityChanger";
 import { ItemContext } from "../Context/ItemsProvider";
 import ItemPresentation from "./ItemPresentation";
+import useUpdateCart from "../CustomHooks/useUpdateCart";
 
 export default function CartItem(props) {
   const [quantity, setQuantity] = useState(1);
   const { cartList, setCartList } = useContext(ItemContext);
   const index = cartList.findIndex((item) => item.id === props.item.id);
+  const { deleteFromCart } = useUpdateCart();
 
   useEffect(() => {
     const newItems = Array.of(...cartList);
@@ -29,10 +31,7 @@ export default function CartItem(props) {
   };
 
   const deleteItem = () => {
-    const newArray = Array.of(...cartList).filter(
-      (item) => item.id !== props.item.id
-    );
-    setCartList(newArray);
+    deleteFromCart(item);
   };
 
   const editItem = () => {
@@ -43,7 +42,7 @@ export default function CartItem(props) {
   return (
     <Item editItem={editItem} deleteItem={deleteItem}>
       <ItemPresentation item={item} quantity={quantity}>
-      <ItemQuantityChanger decrement={decrement} increment={increment} />
+        <ItemQuantityChanger decrement={decrement} increment={increment} />
       </ItemPresentation>
     </Item>
   );

@@ -39,14 +39,26 @@ input {
   --secondary-color-light: #d4f1f4;
   --secondary-color: #d4f1f4;
   --dark: black;
+  --light: white;
   --z-level1: 1;
   --z-level2: 2;
   --z-level3: 3;
   --z-level4: 4;
   --z-level5: 5;
+  --z-level1001: 1001;
   --add-toplevel-plane: 1000;
   --button-radius: 4rem;
   color: var(--dark);
+}
+
+.font-xl {
+  font-size: 4rem;
+}
+.font-lg {
+  font-size: 1.5rem;
+}
+.font-md {
+  font-size: 1rem;
 }
 
 .fullpage {
@@ -198,11 +210,12 @@ input {
   /* transition: background-color 1s linear */
 }
 
-.item-left:active {
+.item-left:active,
+.product_container:active {
   background-color: var(--primary-color-light);
 }
 
-.item-left:focus {
+.item-left:focus .product_container:active {
   background-color: var(--primary-color-light);
 }
 
@@ -343,6 +356,9 @@ input {
   padding: 0.5rem 1.6em;
 }
 
+.padding-sm {
+  padding: 4px;
+}
 .padding-md {
   padding: 8px;
 }
@@ -631,4 +647,65 @@ input[type="file"] {
   position: absolute;
   bottom: 0px;
   width: 100%;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.half-width {
+  width: 50%;
+}
+.align_center {
+  align-items: center;
+}
+.justify_right {
+  justify-content: flex-end;
+}
+.justify_left {
+  justify-content: flex-start;
+}
+.dropdownMenuContainer {
+  width: -webkit-fill-available;
+  width: -moz-available;
+  border-radius: 0.5rem;
+  color: var(--light);
+  text-align: left;
+}
+
+.dropdownMenuContainer:focus-within, .dropdownMenuContainer:focus{
+  border: 1px solid var(--secondary-color);
+}
+
+.menuOptions {
+  height: 10rem;
+  transition: height 0.2s;
+}
+.hide {
+  height: 0;
+  visibility: hidden;
+}
+
+.showNotification {
+  height: 3rem !important;
+  top: 0px !important;
+  visibility: visible !important;
+}
+
+.notification_container {
+  visibility: hidden;
+  --distance-from-side: min(8rem, 24vw);
+  height: 0rem;
+  transition: height 0.2s;
+  position: fixed;
+  top: -8px;
+  left: var(--distance-from-side);
+  right: var(--distance-from-side);
+  color: var(--dark);
+  font-size: 1rem;
+  background-color: var(--secondary-color-light);
+  border-bottom: 8px solid var(--primary-color-light);
+  justify-content: space-between;
+
+  z-index: var(--z-level1001);
 }

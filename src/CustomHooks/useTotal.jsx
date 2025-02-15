@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ItemContext } from "../../Context/ItemsProvider";
-import { getPrice } from "../../Utils/ItemUtils";
+import { ItemContext } from "../Context/ItemsProvider";
+import { getPrice } from "../Utils/ItemUtils";
 
 const useTotal = () => {
   const { cartList } = useContext(ItemContext);

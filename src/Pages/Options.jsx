@@ -1,19 +1,19 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import OptionItem from "../Components/OptionItem";
-import {
-  cacheDataGroceries,
-  cacheDataPathList,
-  SavedData,
-} from "../Utils/Constants";
 import { BsFiletypeJson } from "react-icons/bs";
-import { mergeProductList } from "../Utils/Utils";
+import OptionItem from "../Components/OptionItem";
 import { ItemContext } from "../Context/ItemsProvider";
+import { SavedData } from "../Utils/Constants";
+import { mergeProductList } from "../Utils/Utils";
+import useNotification from "../CustomHooks/useNotification";
+import useUpdateCart from "../CustomHooks/useUpdateCart";
 
 export default function Options() {
   const [downloadUrl, setDownloadUrl] = useState();
   const downloadButton = useRef();
   const importButton = useRef();
   const { items, setItems } = useContext(ItemContext);
+  const { sendPositiveNotification } = useNotification();
+  const { clearCart } = useUpdateCart();
   let fileDownloadURL;
 
   useEffect(() => {
@@ -42,6 +42,7 @@ export default function Options() {
       // Test any assumptions about its contents!
       const fileContents = e.target.result;
       setItems(mergeProductList(items, JSON.parse(fileContents)));
+      sendPositiveNotification("Imported.");
     };
 
     // The fileloaded event handler is triggered when the read completes
@@ -59,7 +60,7 @@ export default function Options() {
   const itemArray = [
     {
       description: "Export Data",
-      image: <BsFiletypeJson  className="option_image" />,
+      image: <BsFiletypeJson className="option_image" />,
       hiddenElement: (
         <a
           className="hidden"
@@ -93,6 +94,8 @@ export default function Options() {
       hiddenElement: <></>,
       onClick: () => {
         setItems([]);
+        clearCart();
+        sendPositiveNotification("Deleted All Data.");
       },
     },
   ];

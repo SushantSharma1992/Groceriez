@@ -8,10 +8,8 @@ export default function ProductSearch() {
 
   const higlightInList = (item) => {
     const itemDom = document.getElementById(item.id);
-    itemDom.scrollIntoView();
-    itemDom.click();
-    itemDom.focus();
-
+    itemDom.scrollIntoView({ alignToTop: true });
+    itemDom.focus({ focusVisible: true });
   };
 
   return (

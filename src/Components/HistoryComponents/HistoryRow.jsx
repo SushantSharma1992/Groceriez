@@ -5,11 +5,13 @@ import { ItemContext } from "../../Context/ItemsProvider";
 import { routerPath } from "../../Routes/Urls";
 import { deleteFromArray } from "../../Utils/Utils";
 import Button from "../Button";
+import useNotification from "../../CustomHooks/useNotification";
 
 const HistoryRow = ({ item }) => {
   const navigate = useNavigate();
   const { savedHistory, setSavedHistory, setCartList } =
     useContext(ItemContext);
+  const { sendPositiveNotification } = useNotification();
   const loadIntoCart = (cart) => {
     setCartList(cart);
   };
@@ -18,11 +20,12 @@ const HistoryRow = ({ item }) => {
   };
 
   return (
-    <div key={item.name} className="flex-row padding-md">
+    <div key={item.name} className="flex-row padding-md margin-auto">
       <div
-        className="margin-auto paddingright-md"
+        className="paddingright-md"
         onClick={() => {
           loadIntoCart(item.snapshot);
+          sendPositiveNotification("Loaded in Cart.");
           redirectToCart();
         }}
       >
@@ -32,11 +35,12 @@ const HistoryRow = ({ item }) => {
         <Button
           onClick={() => {
             const newList = deleteFromArray(
-              Array.of(...savedHistory),
+              savedHistory,
               "cartId",
               item.cartId
             );
             setSavedHistory(newList);
+            sendPositiveNotification("Successfully Deleted.");
           }}
         >
           <MdDeleteOutline />

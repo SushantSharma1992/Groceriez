@@ -20,11 +20,7 @@ export const mergeProductList = (oldList, newList) => {
 };
 
 export const deleteFromArray = (array, matchKey, matchValue) => {
-  const index = array.findIndex((item) => {
-    return item[matchKey] === matchValue;
-  });
-  array.splice(index, 1);
-  return array;
+  return Array.of(...array).filter((value) => value[matchKey] !== matchValue);
 };
 
 export const escapePressed = (e) => e.key === "Escape";

@@ -2,18 +2,10 @@ import React from "react";
 import { useContext } from "react";
 import { ItemContext } from "../Context/ItemsProvider";
 import Search from "./Search";
+import useUpdateCart from "../CustomHooks/useUpdateCart";
 
 export default function CartSearch() {
-  const { items, cartList, setCartList } = useContext(ItemContext);
-  const addToCart = (item) => {
-    if (
-      !cartList.find((value) => {
-        return value.id === item.id;
-      })
-    ) {
-      setCartList((pervState) => [...pervState, item]);
-    }
-  };
-
+  const { items } = useContext(ItemContext);
+  const { addToCart } = useUpdateCart();
   return <Search list={items} actionOnResult={addToCart} />;
 }

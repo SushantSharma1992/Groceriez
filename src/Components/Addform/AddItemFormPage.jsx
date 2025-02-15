@@ -7,6 +7,7 @@ import AddQuantityRow from "./AddQuantityRow";
 import FormRow from "./FormRow";
 import Button from "../Button";
 import { escapePressed } from "../../Utils/Utils";
+import useNotification from "../../CustomHooks/useNotification";
 
 export default function AddItemFormPage(props) {
   const { product, setShow } = props;
@@ -14,6 +15,7 @@ export default function AddItemFormPage(props) {
   const [item, setItem] = useState(product);
   const [quantityArray, setQuantityArray] = useState([]);
   const [barcode, setBarcode] = useState(item.barcode);
+  const { sendPositiveNotification } = useNotification();
 
   const deleteQuantityRow = (index) => {
     setQuantityArray((prev) => {
@@ -41,7 +43,7 @@ export default function AddItemFormPage(props) {
     setItems((prevState) => {
       const newArray = Array.of(...prevState);
       const index = newArray.findIndex((value) => value.id === newItem.id);
-      if (index > 0) {
+      if (index !== -1) {
         newArray[index] = newItem;
       }
       return newArray;
@@ -51,7 +53,7 @@ export default function AddItemFormPage(props) {
     setCartList((prevState) => {
       const newArray = Array.of(...prevState);
       const index = newArray.findIndex((value) => value.id === newItem.id);
-      if (index > 0) {
+      if (index !== -1) {
         newArray[index] = { ...newArray[index], ...newItem };
       }
       return newArray;
@@ -73,6 +75,7 @@ export default function AddItemFormPage(props) {
         newItem = { ...item, ...data, updateOn: new Date() };
         updateInProducts(newItem);
         updateInCart(newItem);
+        sendPositiveNotification("Item Updated.")
       } else {
         const prevId = items[items.length - 1]?.id || 0;
         newItem = {
@@ -83,8 +86,10 @@ export default function AddItemFormPage(props) {
           ...data,
         };
         setItems((prevState) => [...prevState, newItem]);
+        sendPositiveNotification("Item Added.")
       }
     }
+    
     resetValues();
   };
 

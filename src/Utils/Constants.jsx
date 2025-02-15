@@ -130,6 +130,12 @@ export const initObject = {
 
 const initHistoryObj = { name: "Empty", snapshot: [] };
 
+export const defaultNotificationObj = {
+  icon: <></>,
+  text: "",
+  timeout: 3000,
+};
+
 export const metricChartArray = [
   ["Kg", "1000"],
   ["g", "1"],

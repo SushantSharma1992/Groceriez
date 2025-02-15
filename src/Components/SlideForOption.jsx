@@ -5,12 +5,12 @@ export default function SlideForOption({ children }) {
   let downX;
 
   const applyTranform = (newX) => {
-    let delta = 20;
+    let delta = 200;
     if (currentItemRef.current.style.transform === "translate(0px)") {
       if (newX - downX <= -delta) {
-        currentItemRef.current.style.transform = "translate(-70px)";
+        currentItemRef.current.style.transform = "translate(-100px)";
       } else if (newX - downX >= delta) {
-        currentItemRef.current.style.transform = "translate(70px)";
+        currentItemRef.current.style.transform = "translate(100px)";
       }
     } else {
       currentItemRef.current.style.transform = "translate(0px)";

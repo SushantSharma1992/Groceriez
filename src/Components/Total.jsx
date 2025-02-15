@@ -1,5 +1,5 @@
 import React from "react";
-import useTotal from "./CartComponents/useTotal";
+import useTotal from "../CustomHooks/useTotal";
 
 export default function Total() {
   const total = useTotal();

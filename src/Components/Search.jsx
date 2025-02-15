@@ -10,6 +10,8 @@ export default function Search({ list, actionOnResult }) {
   useEffect(() => {
     if (searchquery) {
       findQuery(searchquery);
+    } else {
+      setSearchResults([]);
     }
   }, [searchquery]);
 

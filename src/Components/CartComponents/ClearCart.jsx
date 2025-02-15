@@ -1,17 +1,12 @@
-import React, { useContext } from "react";
-import { ItemContext } from "../../Context/ItemsProvider";
-import Button from "../Button";
+import React from "react";
 import { MdOutlineDeleteOutline } from "react-icons/md";
+import useUpdateCart from "../../CustomHooks/useUpdateCart";
+import Button from "../Button";
 
 const ClearCart = () => {
-  const { setCartList } = useContext(ItemContext);
+  const { clearCart } = useUpdateCart();
   return (
-    <Button
-      type="menu"
-      onClick={() => {
-        setCartList([]);
-      }}
-    >
+    <Button type="menu" onClick={clearCart}>
       <MdOutlineDeleteOutline />
       Clear
     </Button>

@@ -3,7 +3,7 @@ import ItemDetail from "../Components/ItemDetail";
 
 const ItemPresentation = ({item, quantity, children }) => {
   return (
-    <div className="full-width">
+    <div id={item.id} tabindex="0" className="full-width product_container">
       <div className="title_container">
         <span className="product">{`${item.brand} ${item.name} ${item.weight} ${item.unit}`}</span>
       </div>

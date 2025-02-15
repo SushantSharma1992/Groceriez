@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { ItemContext } from "../Context/ItemsProvider";
 import Button from "./Button";
-import useTotal from "./CartComponents/useTotal";
 import { FiSave } from "react-icons/fi";
+import useTotal from "../CustomHooks/useTotal";
+import useNotification from "../CustomHooks/useNotification";
 
 const AddToHistory = () => {
   const { cartList, setSavedHistory } = useContext(ItemContext);
+  const { sendPositiveNotification } = useNotification();
   const total = useTotal();
   return (
     <Button
@@ -30,6 +32,7 @@ const AddToHistory = () => {
             return newArray;
           }
         });
+        sendPositiveNotification("Saved Cart to History.")
       }}
     >
       <FiSave />

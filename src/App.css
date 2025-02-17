@@ -36,8 +36,8 @@ input {
   --secondary-color: #ffe7a0; */
   --primary-color-light: #75e6da;
   --primary-color: #189ab4;
-  --secondary-color-light: #d4f1f4;
-  --secondary-color: #d4f1f4;
+  --secondary-color-light: #f5f0cd;
+  --secondary-color: #fada7a;
   --dark: black;
   --light: white;
   --z-level1: 1;
@@ -210,15 +210,6 @@ input {
   /* transition: background-color 1s linear */
 }
 
-.item-left:active,
-.product_container:active {
-  background-color: var(--primary-color-light);
-}
-
-.item-left:focus .product_container:active {
-  background-color: var(--primary-color-light);
-}
-
 .item-right {
   flex: 1;
   display: flex;
@@ -248,10 +239,6 @@ input {
   background-color: var(--secondary-color-light);
 }
 
-.subtract:hover {
-  background-color: var(--secondary-color-light);
-}
-
 .subtract:active {
   background-color: var(--secondary-color);
 }
@@ -260,21 +247,18 @@ input {
   background-color: var(--primary-color-light);
 }
 
-.add:hover {
-  background-color: var(--primary-color-light);
-}
-
 .add:active {
   background-color: var(--primary-color);
 }
 
 .item-button {
-  font-size: 20px;
+  font-size: 2rem;
   padding: 1rem;
   border: none;
   height: 100%;
   flex: 1;
   overflow: hidden;
+  color: var(--dark);
 }
 
 .addGroceries_button {
@@ -425,6 +409,14 @@ select {
   border-bottom: 1px solid black;
 }
 
+.option_row:hover{
+  border-color: var(--secondary-color-light);
+}
+
+.option_row:active{
+  background-color: var(--secondary-color-light);
+}
+
 .option_description {
   font-size: 24px;
   text-align: center;
@@ -462,7 +454,7 @@ input[type="file"] {
 .search_container {
   position: fixed;
   bottom: 4rem;
-  z-index: 3;
+  z-index: var(--z-level3);
   justify-content: flex-start;
   flex-direction: column;
   align-items: flex-start;
@@ -470,6 +462,7 @@ input[type="file"] {
   padding: 0 0.5rem 0 0.5rem;
   border-radius: 1rem;
   background-color: var(--primary-color-light);
+  max-width: calc(100vw - 112px);
 }
 
 .inner_search_container {
@@ -500,6 +493,8 @@ input[type="file"] {
   padding: 0.5rem;
   border-radius: 1rem;
   cursor: pointer;
+  text-align: start;
+  word-wrap: break-word;
 }
 
 .productItem:focus {
@@ -597,12 +592,12 @@ input[type="file"] {
     font-size: inherit;
     border-radius: 1rem;
     color: inherit;
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-color-light);
     font-weight: bold;
     padding: 0.5rem;
   }
   .menuItem_child:hover {
-    background-color: var(--primary-color-light);
+    border-color: var(--primary-color-light);
   }
   a {
     flex-direction: row;
@@ -673,8 +668,14 @@ input[type="file"] {
   text-align: left;
 }
 
-.dropdownMenuContainer:focus-within, .dropdownMenuContainer:focus{
+.dropdownMenuContainer:focus-within,
+.dropdownMenuContainer:focus {
   border: 1px solid var(--secondary-color);
+}
+
+.width-available {
+  width: -webkit-fill-available;
+  width: -moz-available;
 }
 
 .menuOptions {
@@ -689,11 +690,10 @@ input[type="file"] {
 .showNotification {
   height: 3rem !important;
   top: 0px !important;
-  visibility: visible !important;
 }
 
 .notification_container {
-  visibility: hidden;
+  overflow: hidden;
   --distance-from-side: min(8rem, 24vw);
   height: 0rem;
   transition: height 0.2s;

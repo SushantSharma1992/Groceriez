@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { ItemContext } from "../../Context/ItemsProvider";
 import { initObject, metricChartArray } from "../../Utils/Constants";
@@ -16,6 +16,10 @@ export default function AddItemFormPage(props) {
   const [quantityArray, setQuantityArray] = useState([]);
   const [barcode, setBarcode] = useState(item.barcode);
   const { sendPositiveNotification } = useNotification();
+
+  const submitButtonRef = useRef("");
+
+  const addProductForm = document.getElementById("myForm");
 
   const deleteQuantityRow = (index) => {
     setQuantityArray((prev) => {
@@ -61,7 +65,7 @@ export default function AddItemFormPage(props) {
   };
 
   const resetValues = () => {
-    document.getElementById("myForm").reset();
+    addProductForm.reset();
     document.getElementById("brand").focus();
     setItem(initObject);
   };
@@ -75,21 +79,20 @@ export default function AddItemFormPage(props) {
         newItem = { ...item, ...data, updateOn: new Date() };
         updateInProducts(newItem);
         updateInCart(newItem);
-        sendPositiveNotification("Item Updated.")
+        sendPositiveNotification("Item Updated.");
       } else {
-        const prevId = items[items.length - 1]?.id || 0;
         newItem = {
-          id: prevId + 1,
+          id: Date.now(),
           purchaseQuantity: 0,
           createdOn: new Date(),
           updateOn: new Date(),
           ...data,
         };
         setItems((prevState) => [...prevState, newItem]);
-        sendPositiveNotification("Item Added.")
+        sendPositiveNotification("Item Added.");
       }
     }
-    
+
     resetValues();
   };
 
@@ -123,6 +126,14 @@ export default function AddItemFormPage(props) {
     setShow(false);
   };
 
+  const saveShortcut = (e) => {
+    if (e.ctrlKey && e.which === 83) {
+      e.preventDefault();
+      document.getElementById("formSubmitButton-id").click();
+      return false;
+    }
+  };
+
   return (
     <div className="add__item_container">
       <div className="closeButton" onClick={close}>
@@ -134,6 +145,7 @@ export default function AddItemFormPage(props) {
           id="myForm"
           onKeyDown={(e) => {
             escapePressed(e) && close();
+            saveShortcut(e);
           }}
         >
           <div className="form_items">
@@ -229,7 +241,7 @@ export default function AddItemFormPage(props) {
               </Button>
             </div>
             <div className="form_row">
-              <Button>Save</Button>
+              <Button id="formSubmitButton-id">Save</Button>
             </div>
           </div>
         </form>

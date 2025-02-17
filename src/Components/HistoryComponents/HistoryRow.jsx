@@ -31,7 +31,7 @@ const HistoryRow = ({ item }) => {
       >
         {item.name}
       </div>
-      <div className="delete_button">
+      <div className="delete_button margin-auto">
         <Button
           onClick={() => {
             const newList = deleteFromArray(

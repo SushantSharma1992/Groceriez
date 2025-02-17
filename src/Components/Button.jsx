@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ onClick, children, type, className }) => {
+const Button = ({ id, onClick, children, type, className }) => {
   const buttonType = (type) => {
     let cssStyle = "";
     switch (type) {
@@ -27,6 +27,7 @@ const Button = ({ onClick, children, type, className }) => {
   return (
     <span className="button_container">
       <button
+        id={id}
         className={`center ${buttonCssClass} ${className || ""}`}
         onClick={onClick}
       >

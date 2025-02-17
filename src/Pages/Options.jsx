@@ -52,6 +52,10 @@ export default function Options() {
   const downloadJsonData = (e) => {
     e.preventDefault();
     const output = localStorage.getItem(SavedData.GROCERIES);
+    if (JSON.parse(output).length === 0) {
+      sendPositiveNotification("Nothing to export.");
+      return;
+    }
     const blob = new Blob([output]);
     fileDownloadURL = URL.createObjectURL(blob);
     setDownloadUrl(fileDownloadURL);

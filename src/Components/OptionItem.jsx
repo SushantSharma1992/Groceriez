@@ -5,7 +5,7 @@ function OptionItem(props) {
   const { description, image, onClick, hiddenElement } = props;
   return (
     <>
-      <div className="option_row" onClick={onClick}>
+      <div className="option_row width-available" onClick={onClick}>
         <span className="option_description">{description}</span>
         <span className="option_image_container">{image}</span>
       </div>

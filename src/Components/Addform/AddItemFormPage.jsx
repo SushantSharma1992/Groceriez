@@ -136,7 +136,7 @@ export default function AddItemFormPage(props) {
 
   return (
     <div className="add__item_container">
-      <div className="closeButton" onClick={close}>
+      <div className="closeButton right_corner" onClick={close}>
         <IoCloseCircleOutline />
       </div>
       <div className="add__Item">

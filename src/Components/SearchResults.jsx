@@ -2,7 +2,7 @@ import React from "react";
 
 export default function SearchResults({ items, onClickAction }) {
   return (
-    <>
+    <div className="search_results">
       {items.map((value) => {
         const item = value.item;
         return (
@@ -15,6 +15,6 @@ export default function SearchResults({ items, onClickAction }) {
           >{`${item.brand} ${item.name} ${item.weight} ${item.unit}`}</div>
         );
       })}
-    </>
+    </div>
   );
 }

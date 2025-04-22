@@ -1,4 +1,5 @@
 import React from "react";
+import { AiOutlineClose } from "react-icons/ai";
 
 const Button = ({ id, onClick, children, type, className }) => {
   const buttonType = (type) => {
@@ -12,6 +13,10 @@ const Button = ({ id, onClick, children, type, className }) => {
         break;
       case "menu":
         cssStyle = "menuItem_child";
+        break;
+      case "cross":
+        cssStyle = "clearSearchButton";
+        children = <AiOutlineClose />;
         break;
 
       default:

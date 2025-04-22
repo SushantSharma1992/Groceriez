@@ -7,7 +7,7 @@ export default function Rates({ item, quantity }) {
       <span>
         <div>{`Price   : ${getPrice(item, quantity)}`}</div>
         <div>Quantity: {quantity}</div>
-        <span className="price">Rs. {getPrice(item, quantity) * quantity}</span>
+        <span className="price">Rs. {(getPrice(item, quantity) * quantity).toFixed(2)}</span>
       </span>
     </div>
   );

@@ -2,6 +2,7 @@ import Fuse from "fuse.js";
 import React, { useEffect, useState } from "react";
 import BarCodeDialog from "./BarCodeDialog";
 import SearchResults from "./SearchResults";
+import Button from "./Button";
 
 export default function Search({ list, actionOnResult }) {
   const [searchResults, setSearchResults] = useState([]);
@@ -39,12 +40,21 @@ export default function Search({ list, actionOnResult }) {
           }}
           value={searchquery}
         ></input>
-        <div className="paddingright-md">
-          <BarCodeDialog
-            setBarcode={(value) => {
-              setSearchquery(value.text);
+        <div className="flex-row center">
+          <Button
+            id="clearSearchbutton-id"
+            onClick={() => {
+              setSearchquery("");
             }}
-          />
+            type="cross"
+          ></Button>
+          <div className="paddingright-md">
+            <BarCodeDialog
+              setBarcode={(value) => {
+                setSearchquery(value.text);
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
